@@ -1,0 +1,39 @@
+# This file contains metadata for your plugin. Since 
+# version 2.0 of QGIS this is the proper way to supply 
+# information about a plugin. The old method of 
+# embedding metadata in __init__.py will 
+# is no longer supported since version 2.0.
+
+# This file should be included when you package your plugin.# Mandatory items:
+
+[general]
+name=Senu Qgis Plugin
+qgisMinimumVersion=3.0
+description=connects to postgres db
+version=0.1
+author=ATTIC GIS Solutions
+email=malunje69@gmail.com
+
+about=connects to postgres db
+
+tracker=http://github.com/GISSIAH
+repository=http://github.com/GISSIAH
+# End of mandatory metadata
+
+# Recommended items:
+
+# Uncomment the following line and add your changelog:
+# changelog=
+
+# Tags are comma separated with spaces allowed
+tags=pyqgis
+
+homepage=http://github.com/GISSIAH
+category=Database
+icon=icon.png
+# experimental flag
+experimental=False
+
+# deprecated flag (applies to the whole plugin, not just a single version)
+deprecated=False
+
