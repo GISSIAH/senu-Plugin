@@ -30,6 +30,7 @@ from .resources import *
 # Import the code for the dialog
 from .senu_plug_dialog import SenuDialog
 import os.path
+import requests
 
 
 class Senu:
@@ -180,9 +181,17 @@ class Senu:
                 self.tr(u'&Senu Qgis Plugin'),
                 action)
             self.iface.removeToolBarIcon(action)
+            
+    def loadData(self):
+        h= self.dlg.comboBox_4.currentItem()
+        m=self.dlg.comboBox.currentItem()
+        d=self.dlg.comboBox_2.currentItem()
+        y=self.dlg.comboBox_3.currentItem()
 
-
+        req = requests.get('http://localhost:4000/api/local/specific/?d=%d&m=%m&h=%h')
     def run(self):
+        self.months={'january':1,'february':2,'march':3,'april':4,'may':5,'june':6,'july':7,'august':8,'september':9,'october':10,'november':11,'december':12}
+
         """Run method that performs all the real work"""
 
         # Create the dialog with elements (after translation) and keep reference
@@ -190,7 +199,10 @@ class Senu:
         if self.first_start == True:
             self.first_start = False
             self.dlg = SenuDialog()
-
+        self.dlg.comboBox.addItems(self.months.keys())
+        self.dlg.comboBox_2.addItems(range(1,31,1))
+        self.dlg.comboBox_3.addItems(range(2019,2030,1))
+        self.dlg.comboBox_4.addItems(range(23))
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
